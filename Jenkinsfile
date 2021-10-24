@@ -25,7 +25,7 @@ pipeline {
         }
         stage ('Execute CI pipeline') {
             agent {
-                docker { image 'node:12-buster-slim' }
+                any
             }
             stages{
                 stage ('npm install'){
@@ -35,14 +35,13 @@ pipeline {
                 }
                 stage('NPM build'){
                     steps {
-                        sh 'npm run-script build --prod'
+                        sh 'npm run start:dev'
                     }
                 }
-                stage ('Artifacts') {
+                stage ('Test') {
                     steps {
-                        sh "tar czvf dist.tar.gz dist"
-                        sh 'tar -czvf app.${BUILD_ID}.tar.gz dist'
-                        archiveArtifacts "**/*.tar.gz"
+                        sh 'curl localhost:3000'
+                        
                     }
                 }
             }
