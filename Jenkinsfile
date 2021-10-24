@@ -24,18 +24,18 @@ pipeline {
             }
         }
      
-            stages{
-                stage ('npm install'){
-                    steps {
+      stages{
+          stage ('npm install'){
+             steps {
                         sh "npm install"
                     }
                 }
-                stage('NPM build'){
+           stage('NPM build'){
                     steps {
                         sh 'npm run start:dev'
                     }
                 }
-                stage ('Test') {
+            stage ('Test') {
                     steps {
                         sh 'curl localhost:3000'
                         
