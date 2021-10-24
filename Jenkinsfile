@@ -26,7 +26,7 @@ pipeline {
     
         stage ('npm install'){
              steps {
-                        sh "npm install"
+                        sh "npm install --save-dev nodemon"
                     }
                 }
         stage('NPM build'){
