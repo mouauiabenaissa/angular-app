@@ -23,25 +23,23 @@ pipeline {
                 sh "echo '${env.GIT_LATEST_COMMIT_EDITOR}'"
             }
         }
-    }
-     
-      stages{
-          stage ('npm install'){
+    
+        stage ('npm install'){
              steps {
                         sh "npm install"
                     }
                 }
-           stage('NPM build'){
+        stage('NPM build'){
                     steps {
                         sh 'npm run start:dev'
                     }
                 }
-            stage ('Test') {
+         stage ('Test') {
                     steps {
                         sh 'curl localhost:3000'
                         
                     }
                 }
-            }
+    }    
 }
 
