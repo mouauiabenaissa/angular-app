@@ -23,10 +23,7 @@ pipeline {
                 sh "echo '${env.GIT_LATEST_COMMIT_EDITOR}'"
             }
         }
-        stage ('Execute CI pipeline') {
-            agent {
-                any
-            }
+     
             stages{
                 stage ('npm install'){
                     steps {
